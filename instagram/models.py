@@ -1,10 +1,10 @@
 from django.db import models
-from django.contib.auth.models import User
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Image(models.Model):
 	pic = models.ImageField(upload_to = "images/",null = True)
-	user = models.ForeignKey(User,null=True)
+	user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
 	pic_name = models.CharField(max_length = 30,null = True)
 	likes = models.IntegerField(default=0)
 	pic_caption = models.TextField(null = True, blank=True)
@@ -68,8 +68,8 @@ class Profile(models.Model):
 		return got_profiles
 
 class Comment(models.Model):
-	user = models.ForeignKey(User, null= True)
-	image = models.ForeignKey(Image, null= True,related_name='comment')
+	user = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
+	image = models.ForeignKey(Image, on_delete=models.CASCADE, null= True,related_name='comment')
 	comment= models.TextField( blank=True)
 	
 	def __str__(self):
@@ -83,8 +83,8 @@ class Comment(models.Model):
 		self.save()
 
 class Follow(models.Model):
-	user = models.ForeignKey(Profile,null=True)
-	follower = models.ForeignKey(User,null=True)
+	user = models.ForeignKey(Profile, on_delete=models.CASCADE,null=True)
+	follower = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
 
 	def __int__(self):
 		return self.name
@@ -96,14 +96,14 @@ class Follow(models.Model):
 		self.save()
 
 class Unfollow(models.Model):
-	user = models.ForeignKey(Profile,null=True)
-	follower = models.ForeignKey(User,null=True)
+	user = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+	follower = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 	def __int__(self):
 		return self.name
 
 class Likes(models.Model):
-	user = models.ForeignKey(Profile,null=True)
+	user = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
 	# pic = models.ForeignKey(Pic,null=True)
 
 	def __int__(self):
