@@ -7,39 +7,36 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <title>{{title}}</title>
 
 </head>
 
 <body>
 
-<h2 class="text-center">Instagram</h2>
-{% for image in images%}
-<div class="card" style="margin-left: 200px; margin-top: 80px">
-<div class="container" style="border-top: 1px solid #EEEEEE; width: 515px; height: 100px"><br><br>
-    <img src="{{image.image.url}}" class="master-card" style="width:150px;height:150px;border-radius:15px;padding:15px; margin-top: -60px"><strong style="margin-top: 60px"><a style="color: black" href="{% url 'profile' %}">{{image.user}}</strong>
-</div>
+    <h2 class="text-center">Instagram</h2>
+    <br>
+    <br>
 
-<img src="{{image.image.url}}" alt="Avatar"  style="width:514px; ">
-<div class="container" style="margin: 50px">
-    <div class="row">
-        <div class="col-md-3">
-        <i class="fa fa-bookmark-o" style="font-size:24px; margin-right: 180px "></i></div>
-    </div>
-
-<br>
-    <div class="text-xs px-6 py-4 uppercase text-grey" style=" margin-left: -30px"> 
-        {{pic.pub_date | timesince}}
-    </div>
-    <hr style="width: 400px; margin-left: 0px">
-
-    <div class="mt-4 border-t border-grey-light mx-4 py-4">
-    
-    </div>
+    {% for image in images%}
+        <div class="card" style=" margin-top: 50px">
+            <div class="container" style="border-top: 1px solid #EEEEEE; width: 515px;"><br><br>
+                <img src="{{image.image.url}}" class="master-card" style="width:450px;height:450px;border-radius:15px;padding:15px; margin-top: -60px">
+                <br>
+                <div class="user">
+                    <strong style="margin-top: 60px"><a style="color: black" href="{% url 'profile' %}">{{ image.user }}</strong>
+                </div>
+                <br>
+                <div class="text-xs px-6 py-4 uppercase text-grey" style=" margin-left: -30px"> 
+                    {{image.pub_date | timesince}} ago.
+                </div>
+                <hr style="width: 400px;">
+            </div>
+        </div>
+    {% endfor %}
 </body>
 
-{% endfor %}
+
 
 </html>
 

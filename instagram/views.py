@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Image, Profile, Likes, Follow, Comment
 from .forms import ProfileForm,CommentForm
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def index(request):
     title = 'Instagram Clone'
     images = Image.objects.all()
@@ -11,6 +13,7 @@ def index(request):
     print(images)
     return render(request, 'index.html', {"title":title,"images":images})
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.all()
@@ -18,13 +21,14 @@ def profile(request):
 
     return render(request, 'user.html',{"current_user":current_user,"profile":profile,"follower":follower})
 
+@login_required(login_url='/accounts/login/')
 def search_results(request):
-    if 'pic' in request.GET and request.GET["pic"]:
-        search_term = request.GET.get("pic")
-        searched_profiles = Profile.search_profile(search_term)
+    if "image" in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_image(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"pics": searched_profiles})
+        return render(request, 'search.html',{"message":message,"images": searched_images})
 
     else:
         message = "You haven't searched for any term"

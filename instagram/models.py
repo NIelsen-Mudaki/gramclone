@@ -46,6 +46,11 @@ class Image(models.Model):
 	def save_profile(self):
 		self.save()
 
+	@classmethod
+	def search_image(cls,search_term):
+		get_images = cls.objects.filter(first_name__icontains = search_term)
+		return get_images
+
 class Profile(models.Model):
 	username = models.CharField(default='User',max_length=30)
 	profile_pic = models.ImageField(upload_to = "profile/",null=True)
