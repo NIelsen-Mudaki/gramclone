@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from .models import Image, Profile, Likes, Follow, Comment
@@ -57,3 +57,7 @@ def search_results(request):
 
 def login(request):
     return render(request, 'registration/login.html')
+    
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect('logout_page')
