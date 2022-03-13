@@ -55,6 +55,14 @@ def search_results(request):
 
 	#return render(request,'comment.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    current_user = request.user
+    profiles = Profile.objects.all()
+    follower = Follow.objects.filter(user = profiles)
+
+    return render(request, 'user.html',{"current_user":current_user,"profiles":profiles,"follower":follower})
+
 def login(request):
     return render(request, 'registration/login.html')
     
