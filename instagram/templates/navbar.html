@@ -12,7 +12,7 @@
                 <a class="navbar-brand" href="{% url 'index' %}">Instagram</a>
             </div>
 
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-6 col-md-6 navbar-brand">
                 {% if user.is_authenticated %}
                 <ul>
                 <li class="dropdown">
@@ -28,6 +28,9 @@
                     </li>
                     <li>
                         <a href="/logout">Logout</a>
+                    </li>
+                    <li>
+                    <a href="accounts/profile"> View Profile </a>
                     </li>
                     </ul>
                 </li>
