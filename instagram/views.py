@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
 from .models import Image, Profile, Likes, Follow, Comment
 from .forms import ProfileForm,CommentForm
 
@@ -53,3 +54,6 @@ def search_results(request):
 		#form = CommentForm()
 
 	#return render(request,'comment.html',{"form":form})
+
+def login(request):
+    return render(request, 'registration/login.html')
