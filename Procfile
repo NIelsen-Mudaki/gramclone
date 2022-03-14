@@ -1,1 +1,1 @@
-web: gunicorn niel-gramclone.wsgi --log-file -
+web: gunicorn niel-gramclone.niel-gramclone.wsgi --log-file -
