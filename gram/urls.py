@@ -20,6 +20,8 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import LogoutView
 
+app_name='instagram'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('instagram.urls')),
