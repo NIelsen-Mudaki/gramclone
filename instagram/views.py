@@ -9,10 +9,10 @@ from .forms import ProfileForm,CommentForm
 def index(request):
     title = 'Instagram Clone'
     images = Image.objects.all()
-    # comments = Comment.objects.all()
+    comments = Comment.objects.all()
 
     print(images)
-    return render(request, 'index.html', {"title":title,"images":images})
+    return render(request, 'index.html', {"title":title,"images":images, "comments":comments})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -35,25 +35,25 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
 
-#def comment(request,id):
+def comment(request,id):
 	
-	#post = get_object_or_404(Image,id=id)	
-	#current_user = request.user
-	#print(post)
+	post = get_object_or_404(Image,id=id)	
+	current_user = request.user
+	print(post)
 
-	#if request.method == 'POST':
-		#form = CommentForm(request.POST)
+	if request.method == 'POST':
+		form = CommentForm(request.POST)
 
-		#if form.is_valid():
-			#comment = form.save(commit=False)
-			#comment.user = current_user
-			#comment.pic = post
-			#comment.save()
-			#return redirect('index')
-	#else:
-		#form = CommentForm()
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.user = current_user
+			comment.pic = post
+			comment.save()
+			return redirect('index')
+	else:
+		form = CommentForm()
 
-	#return render(request,'comment.html',{"form":form})
+	return render(request,'comment.html',{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
