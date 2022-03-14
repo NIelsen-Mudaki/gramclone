@@ -163,6 +163,8 @@ STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
 STATIC_URL = STATIC_HOST + "/static/"
 STATICFILES_STORAGE ="django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
+DEBUG_PROPAGATE_EXCEPTIONS = True
+
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
 
