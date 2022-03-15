@@ -64,7 +64,7 @@ def profile(request):
     return render(request, 'user.html',{"current_user":current_user,"profiles":profiles,"follower":follower})
 
 def login(request):
-    return render(request, 'django_registration/login.html')
+    return render(request, 'registration/login.html')
     
 def logout(request):
     logout(request)
