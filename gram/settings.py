@@ -161,7 +161,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 STATIC_ROOT = BASE_DIR/ "staticfiles"
 STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
 STATIC_URL = STATIC_HOST + "/static/"
-STATICFILES_STORAGE ="django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+# STATICFILES_STORAGE ="django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
