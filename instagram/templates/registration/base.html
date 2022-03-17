@@ -15,7 +15,9 @@
 {%endif%}
 
 {% block styles %}
-    {% bootstrap_css %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
 {% endblock %}
 
 </head>
