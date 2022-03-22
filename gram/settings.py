@@ -54,7 +54,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-01p*+4wej5jk32^7a!74$28nq4ygl778jh3c2(@^&kk5rnib9n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap3',
     'instagram',
-    'django_registration'
+    'registration'
 ]
 
 MIDDLEWARE = [
@@ -164,7 +164,7 @@ STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
 STATIC_URL = STATIC_HOST + "/static/"
 STATICFILES_STORAGE ="django.contrib.staticfiles.storage.CompressedManifestStaticFilesStorage"
 
-DEBUG_PROPAGATE_EXCEPTIONS = True
+# DEBUG_PROPAGATE_EXCEPTIONS = True
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
