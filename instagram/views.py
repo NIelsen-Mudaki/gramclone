@@ -5,7 +5,7 @@ from .models import Image, Profile, Likes, Follow, Comment
 from .forms import ProfileForm,CommentForm
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def index(request):
     title = 'Instagram Clone'
     images = Image.objects.all()
