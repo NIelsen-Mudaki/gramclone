@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from .models import Image, Profile, Likes, Follow, Comment
@@ -70,6 +71,16 @@ def upload(request):
     else:
         form = UploadForm()
     return render(request, 'post.html', {'form': form})
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/registration_form.html', locals())
 
 def login(request): 
     return render(request, 'registration/login.html')

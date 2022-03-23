@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^accounts/profile/', views.profile, name='profile'),
     url(r'^upload/', views.upload, name='upload'),
     url(r'^comment/(?P<id>[0-9]+)', views.comment, name='comment'),
+    url(r'^accounts/login/accounts/register/', views.register),
     url(r'^login/', views.login, name='login'),
     url(r'^logout/', views.logout, name='logout'),
     url(r'^check/', views.checking)
