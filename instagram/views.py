@@ -28,7 +28,7 @@ def search_results(request):
         return render(request, 'search.html',{"message":message})
 
 # @login_required(login_url='/accounts/login/')
-def comment(request):
+def comment(request,id):
 	
 	post = get_object_or_404(Image,id=id)	
 	current_user = request.user
