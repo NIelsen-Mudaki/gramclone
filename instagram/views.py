@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
@@ -5,16 +6,16 @@ from .models import Image, Profile, Likes, Follow, Comment
 from .forms import *
 
 # Create your views here.
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def index(request):
     title = 'Instagram Clone'
     images = Image.objects.all()
     comments = Comment.objects.all()
 
-    print(images)
+
     return render(request, 'index.html', {"title":title,"images":images, "comments":comments})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def search_results(request):
     if "image" in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
@@ -27,9 +28,9 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def comment(request,id):
-	
+	print (request.method)
 	post = get_object_or_404(Image,id=id)	
 	current_user = request.user
 	print(post)
@@ -40,7 +41,7 @@ def comment(request,id):
 		if form.is_valid():
 			comment = form.save(commit=False)
 			comment.user = current_user
-			comment.pic = post
+			comment.image = post
 			comment.save()
 			return redirect('index')
 	else:
@@ -48,7 +49,7 @@ def comment(request,id):
 
 	return render(request,'comment.html',{"form":form})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profiles = Profile.objects.all()
@@ -56,7 +57,7 @@ def profile(request):
 
     return render(request, 'user.html',{"current_user":current_user,"profiles":profiles,"follower":follower})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def upload(request):
     current_user = request.user
     if request.method == 'POST':
@@ -76,3 +77,6 @@ def login(request):
 def logout(request):
     logout(request)
     return HttpResponseRedirect('logout_page')
+
+def checking(request):
+    return HttpResponse('any string')

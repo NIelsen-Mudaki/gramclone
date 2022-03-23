@@ -1,8 +1,7 @@
-{% extends 'my-inst/base.html'%} 
+{% extends 'base.html'%} 
 {% load staticfiles%}
 {% load bootstrap3 %} 
 {% block content %}
- {{block.super}}
 
 <div class="container">
     <div class="col-md-6"></div>
@@ -18,8 +17,6 @@
     <input type="submit" class="btn btn-primary btn-sm" value="Submit">
     <input type="hidden" name="next" value="{{next}}">
     </form>
-
-    <!--<p><a href="{% url 'timeline' %}">Previous</a></p>-->
     </div>
 </div>
 {% endblock %}
