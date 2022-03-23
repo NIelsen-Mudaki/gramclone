@@ -5,7 +5,7 @@ from .models import Image, Profile, Likes, Follow, Comment
 from .forms import *
 
 # Create your views here.
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def index(request):
     title = 'Instagram Clone'
     images = Image.objects.all()
@@ -14,6 +14,7 @@ def index(request):
     print(images)
     return render(request, 'index.html', {"title":title,"images":images, "comments":comments})
 
+@login_required(login_url='/accounts/login/')
 def search_results(request):
     if "image" in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
@@ -26,6 +27,7 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
 
+@login_required(login_url='/accounts/login/')
 def comment(request):
 	
 	post = get_object_or_404(Image,id=id)	
@@ -46,7 +48,7 @@ def comment(request):
 
 	return render(request,'comment.html',{"form":form})
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profiles = Profile.objects.all()
@@ -54,6 +56,7 @@ def profile(request):
 
     return render(request, 'user.html',{"current_user":current_user,"profiles":profiles,"follower":follower})
 
+@login_required(login_url='/accounts/login/')
 def upload(request):
     current_user = request.user
     if request.method == 'POST':
