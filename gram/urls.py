@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'', include('instagram.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^accounts/', include('django.contrib.auth.urls')),
-    # url(r'^login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    url(r'^login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
     url(r'^logout/', LogoutView.as_view(template_name='index.html'), name='logout'),
 ]
