@@ -63,7 +63,7 @@ def profile(request):
 
     return render(request, 'user.html',{"current_user":current_user,"profiles":profiles,"follower":follower})
 
-def login(request):
+def login(request): 
     return render(request, 'registration/login.html')
     
 def logout(request):
