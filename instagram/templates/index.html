@@ -17,7 +17,6 @@
 
     <h2 class="text-center">Instagram</h2>
     <br>
-    <br>
 
     {% for image in images%}
         <div class="card" style=" margin-top: 50px">
@@ -29,7 +28,7 @@
                     <strong style="margin-top: 60px"><a style="color: black" href="{% url 'profile' %}">{{ image.user }}</strong>
                 </div>
                 <div>
-                    <i onclick="myFunction(this)" class="fa fa-heart" style="font-size:28px;  background-color: white ; margin-top: -200px; margin-left: -30px"></i>
+                    <i onclick="" class="fa fa-heart" style="font-size:28px;  background-color: white ; margin-top: -200px; margin-left: -30px"></i>
                     <a href="{% url 'comment' id=pic.pk %} "><i class="fa fa-comment-o" style="font-size:24px; margin-left: 20px"></i></a>
                 </div>
                 <br>
