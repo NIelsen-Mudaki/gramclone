@@ -26,7 +26,7 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
 
-def comment(request,id):
+def comment(request):
 	
 	post = get_object_or_404(Image,id=id)	
 	current_user = request.user
