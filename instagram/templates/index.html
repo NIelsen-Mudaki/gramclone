@@ -7,7 +7,7 @@
 
     {% for image in images%}
     <div class="container mt-5" style=" width: 515px;">
-        <img src="{{image.pic}}" class="master-card image-responsive" style="width:500px;height:450px;border-radius:15px;padding:15px; margin-top: -60px">
+        <img src="{{image.pic.url}}" class="master-card image-responsive" style="width:500px;height:450px;border-radius:15px;padding:15px; margin-top: -60px">
         <br>
         <div class="user" style="margin-top: 20px;">
             <i class="fa fa-bookmark-o" style="font-size:24px; margin-right: 10px "></i>
@@ -18,6 +18,13 @@
             <a href="{% url 'comment' id=image.pk %} "><i class="fa fa-comment-o" style="font-size:24px; margin-left: 20px"></i></a><br><span>{{image.pub_date | timesince}} ago.</span>
         </div>
         <br>
+        {% for comment in image.comment.all %}
+        <div class="row">
+            <div class="col-md-5">
+            <p style=" font-weight: bold; "><a style="color: black" href="/"> {{comment.user}}</p><span><p>{{comment.comment}}</p></span>
+            </div>
+        </div>
+        {% endfor %}
     </div>
     {% endfor %}
 

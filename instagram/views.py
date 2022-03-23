@@ -73,10 +73,10 @@ def upload(request):
 
 def login(request): 
     return render(request, 'registration/login.html')
-    
+
 def logout(request):
-    logout(request)
-    return HttpResponseRedirect('logout_page')
+    request.session.clear()
+    return redirect('login')
 
 def checking(request):
     return HttpResponse('any string')
