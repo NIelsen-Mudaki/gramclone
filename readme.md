@@ -19,6 +19,10 @@ As a user of the application you should be able to:
 * View different photos that have been posted by different users.
 * Search for different profiles.
 
+## Link to the live site 
+
+
+
 ## SetUp / Installation Requirements
 
 ### Prerequisites
